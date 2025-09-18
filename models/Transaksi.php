@@ -65,6 +65,12 @@ class Transaksi extends \yii\db\ActiveRecord
             $transaksiObat->jumlah = $this->jumlah3;
             $transaksiObat->save();
         }
+        if ($insert) {
+            $this->updateAttributes([
+                'total_harga' => $this->getTotalHarga(),
+                'tanggal_transaksi' => date('Y-m-d H:i:s'),
+            ]);
+        }
     }
     public static function tableName()
     {
